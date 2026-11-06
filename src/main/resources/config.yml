@@ -1,0 +1,73 @@
+settings:
+  debug: false
+  performance:
+    # Maximum main-thread capture work per tick; geometry/selection runs on one worker.
+    player-samples-per-tick: 16
+    geometry-regions-per-tick: 32
+    stationary-region-refresh-ticks: 20
+  fallbacks:
+    area: "Wilderness"
+    neighborhood: ""
+    street: ""
+  street-detection:
+    enabled: true
+    default-radius: 30
+    switch-delay-ticks: 10
+    grace-period-ticks: 40
+    update-interval-ticks: 10
+    geometry-refresh-ticks: 100
+    distance-hysteresis: 2
+
+# IDs are WorldGuard region IDs, not naming conventions. Names are plain text.
+# Optional worlds: [world] restricts an entry to those exact Bukkit world names.
+# Without worlds, each world is queried independently for its own regions.
+areas:
+  sylvarion_city:
+    display-name: "Sylvarion City"
+    neighborhoods:
+      central_district: "Central District"
+      old_town: "Old Town"
+      riverside: "Riverside"
+      downtown: "Downtown"
+      sylvarion_airport: "Sylvarion Airport"
+  moon_lake:
+    display-name: "Moon Lake"
+    neighborhoods:
+      moon_lake_park: "Theme Park"
+      moon_lake_resort: "Resort"
+
+streets:
+  central_avenue:
+    display-name: "Central Avenue"
+    detection-radius: 30
+    priority: 0
+  station_road:
+    display-name: "Station Road"
+    detection-radius: 25
+    priority: 0
+  oak_street:
+    display-name: "Oak Street"
+    detection-radius: 20
+    priority: 0
+
+building-overrides:
+  central_shopping_centre:
+    street: central_avenue
+  sylvarion_central_station:
+    street: station_road
+
+# MiniMessage templates. Dynamic values are inserted as literal text.
+messages:
+  no-permission: '<red>You do not have permission to use this command.'
+  player-only: '<red>This command requires a player.'
+  reloaded: '<green>Reloaded geographical settings (<count> neighbourhood names). Caches are rebuilding in the background.'
+  reload-failed: '<red>Configuration could not be loaded. Previous settings remain active; check the console.'
+  info: '<gold>SylvarionHUDHelper <version></gold><gray> — %sylhud_area% | %sylhud_neighborhood% | %sylhud_street%'
+  help: '<gold>/sylhud help | info | reload | region</gold>'
+  region-header: '<gold>World: <world></gold><gray> — <status>'
+  region-entry: '<gray><id> | priority <priority> | configured: <configured>'
+  region-result: '<green>Selected: <selected> | Display: <display>'
+  region-position: '<gray>Position: X <x>, Y <y>, Z <z>'
+  region-refresh: '<gray>Refresh queued; showing the latest completed location sample. Run again shortly for updated diagnostics.'
+  region-hierarchy: '<green>Area: <area> | Neighbourhood: <neighborhood>'
+  region-street: '<green>Street: <street> | Method: <method> | Horizontal distance: <distance> | Building override: <building>'

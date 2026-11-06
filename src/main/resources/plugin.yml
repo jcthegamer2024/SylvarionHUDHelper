@@ -1,0 +1,19 @@
+name: SylvarionHUDHelper
+version: '${version}'
+main: org.sylvarion.hudhelper.SylvarionHUDHelper
+api-version: '26.3'
+description: Hierarchical area, neighbourhood and nearby street placeholders for Sylvarion City.
+authors: [Sylvarion]
+depend: [PlaceholderAPI, WorldGuard]
+softdepend: [FastAsyncWorldEdit, WorldEdit]
+commands:
+  sylhud:
+    description: Sylvarion HUD administration and region diagnostics
+    usage: /sylhud <help|info|reload|region>
+permissions:
+  sylhud.admin:
+    description: Access to HUD administration, help and information
+    default: op
+  sylhud.region:
+    description: Access to current region diagnostics
+    default: op
